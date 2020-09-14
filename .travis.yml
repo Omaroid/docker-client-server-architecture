@@ -15,7 +15,7 @@ after_success:
     - docker build -t omaroid/multi-server ./server
     - docker build -t omaroid/multi-worker ./worker
     # Login to Docker CLI
-    - docker login -u "DOCKER_ID" -p "$DOCKER_PASSWORD"
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     - docker push omaroid/multi-client
     - docker push omaroid/multi-nginx
     - docker push omaroid/multi-server
